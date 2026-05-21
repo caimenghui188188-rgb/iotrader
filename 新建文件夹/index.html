@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOTrader | IOI - 预测市场 + 杠杆交易</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            color: #e0e0e0;
+            background: #0a0a0a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://picsum.photos/id/1015/1920/1080') center/cover;
+            opacity: 0.15;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00ff9d;
+        }
+        
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00ff9d;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #00ff9d, #00b8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #aaa;
+        }
+        
+        .contract-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #00ff9d;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 2rem 0;
+            font-family: monospace;
+            word-break: break-all;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #00ff9d, #00b8ff);
+            color: #000;
+            font-weight: bold;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.4);
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #00ff9d;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: #1a1a2e;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid #333;
+            transition: all 0.4s;
+        }
+        
+        .feature-card:hover {
+            border-color: #00ff9d;
+            transform: translateY(-15px);
+        }
+        
+        .token-info {
+            background: linear-gradient(135deg, #16213e, #0f1a2e);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        footer {
+            background: #000;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+        
+        .warning {
+            background: #ff880020;
+            border: 1px solid #ff8800;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">IOTrader</div>
+                <div class="nav-links">
+                    <a href="#features">功能</a>
+                    <a href="#token">代币</a>
+                    <a href="https://iotrader.io/" target="_blank">进入App</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container" style="padding-top: 120px;">
+            <div class="hero-content">
+                <h1>IOTrader</h1>
+                <p class="tagline">预测市场 + 杠杆交易<br>未来，由你定义</p>
+                <p style="font-size:1.3rem; margin-bottom:2rem;">
+                    全球首个融合预测市场与永续合约的去中心化交易平台<br>
+                    最高100x杠杆 · 真实世界事件 · 即时结算
+                </p>
+
+                <div class="contract-box">
+                    <strong>代币合约地址 (IOI)：</strong><br>
+                    <span style="color:#00ff9d;">0x7b69f925ccba03f23e3c729a96be936c6fa2dbbd</span>
+                </div>
+
+                <a href="https://iotrader.io/" target="_blank" class="btn">立即交易</a>
+                <a href="#" onclick="copyAddress()" class="btn" style="background:#333;color:#fff;">复制合约地址</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">核心特性</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-line"></i> 预测市场</h3>
+                    <p>体育、政治、科技、加密事件……任何你能想到的事件，都可以交易。</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-bolt"></i> 杠杆交易</h3>
+                    <p>对未来事件使用永续合约式杠杆，最高100x，让你的观点获得最大化收益。</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-shield-alt"></i> 去中心化</h3>
+                    <p>链上透明结算，智能合约驱动，无需信任第三方。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="token">
+        <div class="container">
+            <div class="token-info">
+                <h2>IOI 代币</h2>
+                <p style="font-size:1.4rem; margin:1.5rem 0;">总供应量：1,000,000,000 IOI</p>
+                
+                <div style="display: flex; justify-content: center; gap: 40px; margin: 2rem 0; flex-wrap: wrap;">
+                    <div>
+                        <strong>用途</strong><br>
+                        手续费分成 · 治理 · 质押奖励
+                    </div>
+                    <div>
+                        <strong>合约</strong><br>
+                        <span style="color:#00ff9d; font-family:monospace;">0x7b69f925ccba03f23e3c729a96be936c6fa2dbbd</span>
+                    </div>
+                </div>
+                
+                <a href="https://iotrader.io/" target="_blank" class="btn">去官网交易 IOI</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>IOTrader 官方代币官网模板</strong></p>
+            <p style="margin: 1rem 0;">合约地址：<span style="font-family:monospace; color:#00ff9d;">0x7b69f925ccba03f23e3c729a96be936c6fa2dbbd</span></p>
+            <p>© 2026 IOTrader • 仅供参考，请始终通过官方渠道验证合约</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyAddress() {
+            navigator.clipboard.writeText("0x7b69f925ccba03f23e3c729a96be936c6fa2dbbd").then(() => {
+                alert("✅ 合约地址已复制到剪贴板！");
+            });
+        }
+        
+        console.log("%cIOTrader 官网模板加载完成", "color:#00ff9d; font-size:16px");
+    </script>
+</body>
+</html>
